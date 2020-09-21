@@ -32,6 +32,7 @@ public class StandardWeatherInfoApi implements IWeatherInfoApi {
 
     @Override
     public ForecastWeatherInfo getForecastInfo(String city, WeatherInfo weatherInfo) {
+        //No implementation as standard subscription do not allow this
         return null;
     }
 
