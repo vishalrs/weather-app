@@ -48,7 +48,11 @@ public class WeatherController {
         StandardWeatherInfo stdWeatherInfo = weatherInfoService.getWeatherInfo(city, weatherInfo);
         model.addAttribute("weather_info", stdWeatherInfo);
         model.addAttribute("authUser", authUser);
-
+        if(authUser.getSubscription().equals("premium")){
+            ForecastWeatherInfo forecastWeatherInfo = weatherInfoService.getForecastInfo(city, weatherInfo);
+            System.out.println(forecastWeatherInfo);
+            model.addAttribute("forecast_info", Optional.ofNullable(forecastWeatherInfo).map(o -> o.getForecastWeatherInfos()).orElse(null));
+        }
         return "/weather";
     }
 
